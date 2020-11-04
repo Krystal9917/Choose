@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    tools:context=".student.StuFeedbackActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="22dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:text="@string/student_label"
+            android:textAlignment="center"
+            android:textColor="#808080"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/student_name"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:layout_weight="1"
+            android:textColor="#808080"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:text="@string/major_label"
+            android:textAlignment="center"
+            android:textColor="#808080"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/student_major"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:layout_weight="1"
+            android:textColor="#808080"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:text="@string/major_label"
+            android:textAlignment="center"
+            android:textColor="#808080"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/student_topic"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:layout_weight="1"
+            android:textColor="#808080"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:text="@string/request_extra"
+            android:textAlignment="center"
+            android:textColor="#808080"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/request_extra"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:layout_weight="1"
+            android:textColor="#808080"
+            android:textSize="16dp"
+            android:singleLine="false"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="@string/response_extra"
+            android:textAlignment="center"
+            android:textColor="#696969"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/response_extra"
+            android:layout_width="188dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/approve"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="78dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/submit_btn"
+            android:textColor="#000000"
+            android:background="#98FB98"/>
+
+        <Button
+            android:id="@+id/reject"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/cancel_btn"
+            android:textColor="#000000"
+            android:background="#FFA07A"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/copyright"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:text="@string/second_notice"
+        android:textSize="12dp"
+        android:gravity="center" />
+
+</LinearLayout>

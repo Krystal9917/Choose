@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    tools:context=".ResetActivity">
+
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_gravity="center"
+        tools:src="@mipmap/first_logo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/id_label"
+            android:layout_width="148dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/id"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="22dp"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/select_id"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginLeft="16dp"
+            android:textSize="22dp"
+            android:gravity="center"
+            android:focusable="false"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/pwd_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/new_pwd_label"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="22dp"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/new_pwd"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginLeft="16dp"
+            android:textSize="22dp"
+            android:gravity="center"
+            android:inputType="textPassword"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/again_pwd_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/again_pwd_label"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="22dp"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/again_pwd"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="22dp"
+            android:gravity="center"
+            android:inputType="textPassword"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="88dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/submit_btn"
+            android:textColor="#696969"
+            android:background="#90EE90"/>
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/cancel_btn"
+            android:textColor="#696969"
+            android:background="#FFA07A"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/copyright"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:text="@string/second_notice"
+        android:textSize="12dp"
+        android:gravity="center" />
+
+</LinearLayout>

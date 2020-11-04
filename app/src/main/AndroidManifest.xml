@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.info.choose">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/shake"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/shake"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ResetActivity" />
+        <activity android:name=".student.StuFragActivity" />
+        <activity android:name=".student.StuApplyActivity"/>
+        <activity android:name=".student.StuApplyLogActivity"/>
+        <activity android:name=".teacher.TeacherInfoActivity"/>
+        <activity android:name=".teacher.TeaFragActivity"/>
+        <activity android:name=".teacher.TeaReceiveLogActivity"/>
+        <activity android:name=".teacher.AdjustMaxActivity"/>
+        <activity android:name=".student.StuFeedbackActivity"/>
+    </application>
+
+</manifest>

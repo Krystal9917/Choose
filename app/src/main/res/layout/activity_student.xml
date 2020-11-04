@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_student"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    tools:context=".student.StuFragActivity">
+
+    <fragment
+        android:id="@+id/stu_index"
+        android:name="com.info.choose.student.StuIndexFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <fragment
+        android:id="@+id/stu_home"
+        android:name="com.info.choose.student.StuHomeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/student_home"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="88dp"
+            android:background="@mipmap/mine_clicked"
+            android:tooltipText="Index" />
+
+        <ImageButton
+            android:id="@+id/student_index"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="132dp"
+            android:background="@mipmap/index_un_clicked"
+            android:tooltipText="Mine" />
+
+    </RadioGroup>
+
+</LinearLayout>
