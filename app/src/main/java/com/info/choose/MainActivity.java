@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     };
                 } else {
-                    Toast.makeText(MainActivity.this, "Null Input!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "还未填写完！", Toast.LENGTH_LONG).show();
                 }
             } else if (btn_id == R.id.forget && type_chose && policy_chose) {
                 if (id.getText() != null) {

@@ -4,8 +4,7 @@
     <color name="colorPrimaryDark">#A0522D</color>
     <color name="colorAccent">#C0C0C0</color>
 
-    <color name="colorChecked">#6495ED</color>
+    <color name="colorChecked">#F4A460</color>
     <color name="colorUnchecked">#808080</color>
 
-    <color name="pressed">#98FB98</color>
 </resources>

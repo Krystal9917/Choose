@@ -134,12 +134,6 @@ public class StuFeedbackActivity extends AppCompatActivity {
             };
             Log.i(GlobalData.INFO_TAG+"---Status---",String.valueOf(result_str));
             Toast.makeText(StuFeedbackActivity.this, result_str, Toast.LENGTH_LONG).show();
-            try {
-                Thread.sleep(3000);
-                finish();
-            } catch (InterruptedException e) {
-                Log.i(GlobalData.INFO_TAG,e.toString());
-            }
         }
     }
 }

@@ -93,7 +93,7 @@ public class TeaHomeFragment extends Fragment {
                                             student.getString("topic") + "\n";
                                 }
                             } else {
-                                str = "I don't choose any student!";
+                                str = "我还未选择任何学生！";
                             }
                             handler.sendMessage(message);
                         } catch (Exception e) {
