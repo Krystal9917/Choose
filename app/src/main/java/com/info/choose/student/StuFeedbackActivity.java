@@ -28,7 +28,7 @@ public class StuFeedbackActivity extends AppCompatActivity {
     EditText response_extra;
     TextView student_name, student_major, student_topic, request_extra;
     Handler handler;
-    String id, student_name_str, topic, major;
+    String id, student_name_str, topic, major,result_str;
     int handle, result;
 
 
@@ -115,6 +115,11 @@ public class StuFeedbackActivity extends AppCompatActivity {
                         json.put("status", handle);
                         JSONObject response = new JSONObject(HttpUtils.request("/updateStatus", json));
                         result = response.getInt("status");
+                        if (result == 200) {
+                            result_str = "提交成功！";
+                        } else {
+                            result_str = "网络异常！";
+                        }
                     } catch (Exception e) {
                         Log.i(GlobalData.ERROR_TAG, e.getMessage());
                     }
@@ -124,17 +129,17 @@ public class StuFeedbackActivity extends AppCompatActivity {
             handler = new Handler(Looper.myLooper()) {
                 @Override
                 public void handleMessage(Message message) {
-                    String str;
-                    if (result == 200) {
-                        str = "Submit Successfully!";
-                    } else {
-                        str = "Network Error!";
-                    }
-                    Toast.makeText(StuFeedbackActivity.this, str, Toast.LENGTH_LONG).show();
                     super.handleMessage(message);
                 }
             };
-            finish();
+            Log.i(GlobalData.INFO_TAG+"---Status---",String.valueOf(result_str));
+            Toast.makeText(StuFeedbackActivity.this, result_str, Toast.LENGTH_LONG).show();
+            try {
+                Thread.sleep(3000);
+                finish();
+            } catch (InterruptedException e) {
+                Log.i(GlobalData.INFO_TAG,e.toString());
+            }
         }
     }
 }

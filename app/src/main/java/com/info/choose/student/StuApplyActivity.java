@@ -130,20 +130,20 @@ public class StuApplyActivity extends ListActivity {
                                     String response = HttpUtils.request("/submit", json);
                                     JSONObject result = new JSONObject(response);
                                     if (result.getInt("status") == 200) {
-                                        toast = "Submit Successfully!";
+                                        toast = "申请成功！";
                                     } else if (result.getInt("status") == 400) {
-                                        toast = "Submit Failed!";
+                                        toast = "提交失败！";
                                     } else {
-                                        toast = "Network Error!";
+                                        toast = "网络异常！";
                                     }
                                 } catch (Exception e) {
                                     Log.i(GlobalData.INFO_TAG, e.toString());
                                 }
                             } else {
-                                toast = "You have already had a tutor!";
+                                toast = "你已经选过老师啦！";
                             }
                         } else {
-                            toast = "You choose Null!";
+                            toast = "你还未选题！";
                         }
                         handler.sendMessage(message);
                     }

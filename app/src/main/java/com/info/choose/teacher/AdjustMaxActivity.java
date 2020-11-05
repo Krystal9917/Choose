@@ -98,16 +98,16 @@ public class AdjustMaxActivity extends AppCompatActivity {
                     if (flag) {
                         max_temp = Integer.parseInt(charSequence.toString());
                         if (max_temp < now) {
-                            str = "Invalid: Max number is less than present's!";
+                            str = "非法：最大数不能小于当前已选学生数！";
                         } else {
-                            str = "Valid!";
+                            str = "合法！";
                             left_view.setText(String.valueOf(max_temp - now));
                         }
                     } else {
-                        str = "Invalid: Input contains none numeric character!";
+                        str = "非法：输入字符非数字！";
                     }
                 } else {
-                    str = "Invalid: Max number must non empty!";
+                    str = "非法：未输入字符！";
                 }
                 Toast.makeText(AdjustMaxActivity.this, str, Toast.LENGTH_LONG).show();
             }
@@ -157,11 +157,11 @@ public class AdjustMaxActivity extends AppCompatActivity {
                     public void handleMessage(Message message) {
                         String str;
                         if (status == 200) {
-                            str = "Update Successfully!";
+                            str = "更新成功！";
                         } else if (status == 400) {
-                            str = "Update Failed!";
+                            str = "更新失败！";
                         } else {
-                            str = "Network Error!";
+                            str = "网络异常！";
                         }
                         Toast.makeText(AdjustMaxActivity.this, str, Toast.LENGTH_LONG).show();
                         super.handleMessage(message);

@@ -83,7 +83,7 @@ public class StuApplyLogActivity extends ListActivity {
                     TextView text = findViewById(R.id.no_data);
                     TextView view = findViewById(R.id.notice);
                     view.setText("");
-                    text.setText("I don't have any request logs!");
+                    text.setText("我还未发起过申请！");
                 }
                 super.handleMessage(message);
             }

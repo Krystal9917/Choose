@@ -1,7 +1,9 @@
 package com.info.choose.teacher;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -104,9 +106,9 @@ public class TeaHomeFragment extends Fragment {
                     @Override
                     public void handleMessage(Message message) {
                         new AlertDialog.Builder(getContext())
-                                .setTitle("My Students Information")
+                                .setTitle("我的学生信息")
                                 .setMessage(str)
-                                .setPositiveButton("Got it", null)
+                                .setPositiveButton("好的", null)
                                 .show();
                         super.handleMessage(message);
                     }
@@ -123,6 +125,15 @@ public class TeaHomeFragment extends Fragment {
                 intent.putExtra("id", id);
                 startActivity(intent);
             } else if (view.getId() == R.id.logout) {
+                SharedPreferences sp = getActivity().getSharedPreferences("UserInfo", Activity.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("id","");
+                editor.putString("name", "");
+                editor.putString("sex", "");
+                editor.putString("major", "");
+                editor.putInt("type", 2);
+                editor.apply();
+
                 getActivity().finish();
             }
         }

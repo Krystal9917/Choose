@@ -45,4 +45,6 @@
     <string name="detail_label">点击查看详情</string>
     <string name="apply_btn">立即申请</string>
     <string name="extra_notice">如果需要，可以在此处增加额外信息。</string>
+    <string name="btn_agree">接受</string>
+    <string name="btn_reject">拒绝</string>
 </resources>

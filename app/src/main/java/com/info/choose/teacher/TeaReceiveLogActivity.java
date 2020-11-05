@@ -83,7 +83,7 @@ public class TeaReceiveLogActivity extends ListActivity {
                     TextView text = findViewById(R.id.no_data);
                     TextView view = findViewById(R.id.notice);
                     view.setText("");
-                    text.setText("I haven't received any request now!");
+                    text.setText("暂未接收到学生申请！");
                 }
                 super.handleMessage(message);
             }

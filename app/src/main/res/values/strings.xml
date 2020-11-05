@@ -44,4 +44,6 @@
     <string name="detail_label">Click For Details</string>
     <string name="apply_btn">Apply For</string>
     <string name="extra_notice">If possible, you can add some information here.</string>
+    <string name="btn_agree">Agree</string>
+    <string name="btn_reject">Reject</string>
 </resources>

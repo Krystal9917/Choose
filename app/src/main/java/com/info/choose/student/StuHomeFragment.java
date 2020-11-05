@@ -1,7 +1,9 @@
 package com.info.choose.student;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -52,6 +54,9 @@ public class StuHomeFragment extends Fragment {
                     String teacher = response.getString("teacher");
                     if (!teacher.equals(null) && !teacher.equals("null")) {
                         str = "我的导师是：" + teacher;
+                    }
+                    else {
+                        str = "暂未确定导师";
                     }
                     handler.sendMessage(message);
                 } catch (Exception e) {
@@ -105,6 +110,15 @@ public class StuHomeFragment extends Fragment {
                 intent.putExtra("id", id);
                 startActivity(intent);
             } else if (view.getId() == R.id.logout) {
+                SharedPreferences sp = getActivity().getSharedPreferences("UserInfo", Activity.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("id","");
+                editor.putString("name", "");
+                editor.putString("sex", "");
+                editor.putString("major", "");
+                editor.putString("grade", "");
+                editor.putInt("type", 2);
+                editor.apply();
                 getActivity().finish();
             }
         }

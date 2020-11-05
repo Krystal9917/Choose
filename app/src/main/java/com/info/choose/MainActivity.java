@@ -2,11 +2,14 @@ package com.info.choose;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,8 +21,6 @@ import android.widget.Toast;
 
 import com.info.choose.entity.User;
 import com.info.choose.student.StuFragActivity;
-import com.info.choose.student.StuHomeFragment;
-import com.info.choose.student.StuIndexFragment;
 import com.info.choose.teacher.TeaFragActivity;
 
 import org.json.JSONObject;
@@ -36,34 +37,70 @@ public class MainActivity extends AppCompatActivity {
     User user;
     Handler handler;
     String global;
+    SharedPreferences sharedPreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // logo
-        imageView = findViewById(R.id.logo);
-        imageView.setImageResource(R.mipmap.first_logo);
-        // input information
-        id = findViewById(R.id.id_input);
-        password = findViewById(R.id.pwd_input);
-        // type checkbox
-        teacher_type = findViewById(R.id.teacher_type);
-        student_type = findViewById(R.id.student_type);
-        // policy checkbox
-        policy_agree = findViewById(R.id.policy);
-        // button
-        login = findViewById(R.id.login);
-        forget = findViewById(R.id.forget);
+        sharedPreferences = getSharedPreferences("UserInfo", Activity.MODE_PRIVATE);
+        PreferenceManager.getDefaultSharedPreferences(this);
+        String user_id = sharedPreferences.getString("id","");
+        String name = sharedPreferences.getString("name", "");
+        int type = sharedPreferences.getInt("type", 2);
+        String sex = sharedPreferences.getString("sex", "");
+        String major = sharedPreferences.getString("major","");
+        String grade = sharedPreferences.getString("grade","");
+        Log.i(GlobalData.INFO_TAG+"---Type---",String.valueOf(type));
 
-        // add listener
-        teacher_type.setOnCheckedChangeListener(new CheckBoxListener());
-        student_type.setOnCheckedChangeListener(new CheckBoxListener());
-        policy_agree.setOnCheckedChangeListener(new CheckBoxListener());
+        if(!(user_id.equals("") && name.equals("")) && type != 2){
+            Intent intent;
+            if(type == 0){
+                intent = new Intent(MainActivity.this, StuFragActivity.class);
+                intent.putExtra("id", user_id);
+                intent.putExtra("name", name);
+                intent.putExtra("sex", sex);
+                intent.putExtra("major", major);
+                intent.putExtra("grade", grade);
+                startActivity(intent);
+            }
+            else if(type == 1){
 
-        login.setOnClickListener(new ButtonListener());
-        forget.setOnClickListener(new ButtonListener());
+                intent = new Intent(MainActivity.this, TeaFragActivity.class);
+                intent.putExtra("id", user_id);
+                intent.putExtra("name", name);
+                intent.putExtra("sex", sex);
+                intent.putExtra("major", major);
+                startActivity(intent);
+            }
+        }
+        else{
+            // logo
+            imageView = findViewById(R.id.logo);
+            imageView.setImageResource(R.mipmap.first_logo);
+            // input information
+            id = findViewById(R.id.id_input);
+            password = findViewById(R.id.pwd_input);
+            // type checkbox
+            teacher_type = findViewById(R.id.teacher_type);
+            student_type = findViewById(R.id.student_type);
+            // policy checkbox
+            policy_agree = findViewById(R.id.policy);
+            // button
+            login = findViewById(R.id.login);
+            forget = findViewById(R.id.forget);
+
+            // add listener
+            teacher_type.setOnCheckedChangeListener(new CheckBoxListener());
+            student_type.setOnCheckedChangeListener(new CheckBoxListener());
+            policy_agree.setOnCheckedChangeListener(new CheckBoxListener());
+
+            login.setOnClickListener(new ButtonListener());
+            forget.setOnClickListener(new ButtonListener());
+        }
+
     }
 
     class CheckBoxListener implements CompoundButton.OnCheckedChangeListener {
@@ -126,6 +163,10 @@ public class MainActivity extends AppCompatActivity {
                                     JSONObject object = result.getJSONObject("user");
                                     user = new User(object.getString("id"), object.getString("name"),
                                             object.getString("sex"), object.getString("major"), object.getString("grade"));
+                                    SharedPreferences sp = getSharedPreferences("UserInfo", Activity.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sp.edit();
+                                    editor.putInt("type", type);
+                                    Log.i(GlobalData.INFO_TAG+"---Store Type---",String.valueOf(type));
                                     if (type == 0) {
                                         Intent intent = new Intent(MainActivity.this, StuFragActivity.class);
                                         intent.putExtra("id", user.getId());
@@ -133,6 +174,9 @@ public class MainActivity extends AppCompatActivity {
                                         intent.putExtra("sex", user.getSex());
                                         intent.putExtra("major", user.getMajor());
                                         intent.putExtra("grade", user.getGrade());
+
+                                        editor.putString("grade", user.getGrade());
+
                                         password.setText("");
                                         student_type.setChecked(false);
                                         startActivity(intent);
@@ -146,13 +190,18 @@ public class MainActivity extends AppCompatActivity {
                                         teacher_type.setChecked(false);
                                         startActivity(intent);
                                     }
-                                    Toast.makeText(MainActivity.this, "Login Successfully!", Toast.LENGTH_LONG).show();
+                                    editor.putString("id", user.getId());
+                                    editor.putString("name", user.getName());
+                                    editor.putString("sex", user.getSex());
+                                    editor.putString("major", user.getMajor());
+                                    editor.apply();
+                                    Toast.makeText(MainActivity.this, "登录成功！", Toast.LENGTH_LONG).show();
                                 } catch (Exception e) {
                                     Log.i("Response---" + GlobalData.ERROR_TAG, e.getMessage());
                                 }
                             } else {
                                 password.setText("");
-                                Toast.makeText(MainActivity.this, "Login Failed!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(MainActivity.this, "登录失败，用户不存在或密码错误！", Toast.LENGTH_LONG).show();
                             }
 
                             super.handleMessage(message);
@@ -169,11 +218,11 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("type",type);
                     startActivityForResult(intent, 200);
                 } else {
-                    Toast.makeText(MainActivity.this, "Null Input!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "还未填写完！", Toast.LENGTH_LONG).show();
                 }
             }
             else{
-                Toast.makeText(MainActivity.this, "Null Input!", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "还未填写完！", Toast.LENGTH_LONG).show();
             }
         }
     }

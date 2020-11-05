@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -88,7 +89,10 @@ public class TeaIndexFragment extends Fragment {
         handler = new Handler(Looper.myLooper()) {
             @Override
             public void handleMessage(Message message) {
-                Log.i(GlobalData.INFO_TAG, "Finish!");
+                if(listItems.size()!=0){
+                    TextView view = getActivity().findViewById(R.id.no_data);
+                    view.setText("");
+                }
                 super.handleMessage(message);
             }
         };

@@ -52,7 +52,7 @@ public class TeacherInfoActivity extends Activity {
                     JSONObject object = new JSONObject(list);
                     JSONArray students = object.getJSONArray("students");
                     if (students.length() == 0) {
-                        students_name = "No student choose now.";
+                        students_name = "暂无学生选择";
                     } else {
                         for (int i = 0; i < students.length(); i++) {
                             students_name += students.getJSONObject(i).getString("student_name") + "\n";
@@ -125,9 +125,9 @@ public class TeacherInfoActivity extends Activity {
 
             } else if (view.getId() == R.id.show) {
                 new AlertDialog.Builder(TeacherInfoActivity.this)
-                        .setTitle("Those students chose the teacher")
+                        .setTitle("选择此位老师的学生")
                         .setMessage(students_name)
-                        .setPositiveButton("Got it", null)
+                        .setPositiveButton("好的", null)
                         .show();
             }
         }
